@@ -9,17 +9,16 @@ const Header ={
     font-weight:800;
     font-size:32px;
     `,
-    LocationInput:styled.div`
-    border:none;
-    border-bottom:1px solid #dddd;
-    width:auto;
-    min-width:20px;
-    input{
-        border:none;
-        outline:none;
-        width:100%;
-        height:100%;
-    }
-    `
+    // LocationInput:styled.div`
+    // border:none;
+    // width:auto;
+    // min-width:20px;
+    // input{
+    //     border:none;
+    //     outline:none;
+    //     width:100%;
+    //     height:100%;
+    // }
+    // `
 }
 export  {Header}
