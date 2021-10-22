@@ -40,7 +40,7 @@ function App() {
     <Page>
       <div>
         <LocationHeader></LocationHeader>
-        <CurrentDay weatherData={weatherData?.current} tempType={tempType} />
+        <CurrentDay weatherData={weatherData} tempType={tempType} />
       </div>
       <MesureType.Box>
         <MesureType.Button

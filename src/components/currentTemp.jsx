@@ -3,11 +3,13 @@ import Current from "./currentTemp.style";
 function CurrentDay({ weatherData, tempType }) {
   return (
     <Current.Box>
-      <Current.Icon src={weatherData?.condition?.icon} />
+      <Current.Icon src={weatherData?.current?.condition?.icon} />
       <div>
         <Current.Temp>
-          {tempType === "c" ? weatherData?.temp_c : weatherData?.temp_f}&#176;
+          {tempType === "c" ? weatherData?.current?.temp_c : weatherData?.current?.temp_f}&#176;
         </Current.Temp>
+        <span>{tempType === "c" ? weatherData?.forecast?.forecastday[0]?.day?.mintemp_c:weatherData?.forecast?.forecastday[0]?.day?.mintemp_f}&#176; /
+         {tempType === "c" ? weatherData?.forecast?.forecastday[0]?.day?.maxtemp_c:weatherData?.forecast?.forecastday[0]?.day?.maxtemp_f}&#176;</span>
       </div>
     </Current.Box>
   );
