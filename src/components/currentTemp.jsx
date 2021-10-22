@@ -6,10 +6,10 @@ function CurrentDay({ weatherData, tempType }) {
       <Current.Icon src={weatherData?.current?.condition?.icon} />
       <div>
         <Current.Temp>
-          {tempType === "c" ? weatherData?.current?.temp_c : weatherData?.current?.temp_f}&#176;
+          {tempType === "temp_c" ? weatherData?.current?.temp_c : weatherData?.current?.temp_f}&#176;
         </Current.Temp>
-        <span>{tempType === "c" ? weatherData?.forecast?.forecastday[0]?.day?.mintemp_c:weatherData?.forecast?.forecastday[0]?.day?.mintemp_f}&#176; /
-         {tempType === "c" ? weatherData?.forecast?.forecastday[0]?.day?.maxtemp_c:weatherData?.forecast?.forecastday[0]?.day?.maxtemp_f}&#176;</span>
+        <span>{tempType === "temp_c" ? weatherData?.forecast?.forecastday[0]?.day?.mintemp_c:weatherData?.forecast?.forecastday[0]?.day?.mintemp_f}&#176; /
+         {tempType === "temp_c" ? weatherData?.forecast?.forecastday[0]?.day?.maxtemp_c:weatherData?.forecast?.forecastday[0]?.day?.maxtemp_f}&#176;</span>
       </div>
     </Current.Box>
   );
