@@ -1,5 +1,5 @@
 import DayWeather from "./dayWeather";
-import CurrentDay from "./currentDay";
+import CurrentDay from "./currentTemp";
 import LocationHeader from "./locationHeader";
 
 export { DayWeather, CurrentDay, LocationHeader };
