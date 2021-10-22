@@ -35,7 +35,7 @@ function App() {
     <Page>
       <div>
         <LocationHeader></LocationHeader>
-        <h1>Home</h1>
+        <CurrentDay/>
         <div>
           <Flex>
             <DayWeather name="Mon" />
