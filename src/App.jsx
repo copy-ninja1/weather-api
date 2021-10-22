@@ -11,6 +11,7 @@ const Page = styled.div`
 `;
 const Flex = styled.div`
   display: flex;
+  justify-content: center;
 `;
 const MesureType = {
   Box: styled.div`
