@@ -1,14 +1,24 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import { fetchWeather, setCurrentLocation } from "../store/weatherSlice";
 
 function SelectLocation() {
-  const [currentLocation, setCurrentLocation] = React.useState("Abuja");
-  const options = ["Abuja", "Lagos", "Califoni"];
+  const dispatch = useDispatch();
+  const { currentLocation } = useSelector((state) => state.weather);
+
+  // const [currentLocation, setCurrentLocation] = React.useState("Abuja");
+  const options = ["Delhi", "Lagos", "Mexico"];
   const handleLocationChange = (e) => {
     // console.log({ e });
-    setCurrentLocation(e.value)
+    dispatch(setCurrentLocation(e.value));
   };
+
+  React.useEffect(() => {
+    dispatch(fetchWeather(currentLocation));
+  }, [currentLocation]);
+
   return (
     <Dropdown
       options={options}

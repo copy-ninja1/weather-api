@@ -1,10 +1,14 @@
 import React from "react";
 import Current from "./currentTemp.style";
-function CurrentDay() {
+function CurrentDay({ weatherData, tempType }) {
   return (
     <Current.Box>
-      <Current.Temp>61&#176;</Current.Temp>
-      <span>60&#176; / 70&#176;</span>
+      <Current.Icon src={weatherData?.condition?.icon} />
+      <div>
+        <Current.Temp>
+          {tempType === "c" ? weatherData?.temp_c : weatherData?.temp_f}&#176;
+        </Current.Temp>
+      </div>
     </Current.Box>
   );
 }
