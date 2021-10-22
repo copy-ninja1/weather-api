@@ -17,7 +17,7 @@ function SelectLocation() {
 
   React.useEffect(() => {
     dispatch(fetchWeather(currentLocation));
-  }, [currentLocation]);
+  }, [currentLocation,dispatch]);
 
   return (
     <Dropdown
