@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { setTemperatureType } from "./store/weatherSlice";
 import { CurrentDay, LocationHeader, WeatherChart } from "./components";
 const Page = styled.div`
   position: relative;
@@ -10,6 +11,7 @@ const Page = styled.div`
   text-align: center;
   min-height: 100vh;
 `;
+
 const MesureType = {
   Box: styled.div`
     position: absolute;
@@ -29,49 +31,30 @@ const MesureType = {
   `,
 };
 function App() {
-  const { weatherData } = useSelector((state) => state.weather);
-  const [tempType, setTempType] = React.useState("temp_c");
-  const [chartData, setChartData] = React.useState([]);
+  const dispatch= useDispatch()
+  const { weatherData ,temperatureType} = useSelector((state) => state.weather);
   const handletempChange = (temp) => {
-    setTempType(temp);
+    dispatch(setTemperatureType(temp));
   };
-  const getWeatherDataToPlot = () => {
-    let data = [];
-    weatherData?.forecast?.forecastday[0]?.hour.forEach((weather) => {
-      data.push([weather.time, weather[tempType], weather.humidity]);
-    });
-    console.log(data)
-    data.unshift(['Time', 'Temperature', 'humidity'])
-    setChartData(data)
-  };
-  React.useEffect(() => {
-    getWeatherDataToPlot();
-  }, [weatherData, tempType]);
-  //   [
-  //     // temperature in centigrade
-  //   ['Time', 'Temperature', 'humidity', 'Profit'],
-  //   ['2014', 1000, 400, 200],
-  //   ['2015', 1170, 460, 250],
-  //   ['2016', 660, 1120, 300],
-  //   ['2017', 1030, 540, 350],
-  // ]
+
   return (
     <Page>
       <div>
         <LocationHeader></LocationHeader>
-        <CurrentDay weatherData={weatherData} tempType={tempType} />
-        <WeatherChart data={chartData} />
+        <CurrentDay weatherData={weatherData} tempType={temperatureType} />
+        <WeatherChart />
       </div>
+      
       <MesureType.Box>
         <MesureType.Button
-          tempType={tempType === "temp_f"}
+          tempType={temperatureType === "temp_f"}
           onClick={() => handletempChange("temp_f")}
         >
           &#176;F
         </MesureType.Button>{" "}
         |{" "}
         <MesureType.Button
-          tempType={tempType === "temp_c"}
+          tempType={temperatureType === "temp_c"}
           onClick={() => handletempChange("temp_c")}
         >
           &#176;C
